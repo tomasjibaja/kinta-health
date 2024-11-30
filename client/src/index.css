@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --orange : #e88a18;
+  --dark-orange: #d67600;
+  --light-orange: #f1c085;
+}
+
+.spinner-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0,0,0,.5);
+  animation: appear .1s linear;
+}
+
+.spinner-border {
+  width: 5rem;
+  height: 5rem;
+  color: white;
+}
+
+.page-title {
+  font-size: 25px;
+  color: rgba(0,0,0,.7);
+  font-weight: bold;
+}
+
+.card {
+  box-shadow: 0 0 2px gray;
+  margin-bottom: 18px;
+  border-radius: 0;
+  transition: transform .3s linear;
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: rgba(0,0,0,.6);
+}
+
+.normal-text {
+  font-size: 1rem;
+}
+
+.small-text {
+  font-size: .8rem;
+}
+
+p {
+  color: rgba(0,0,0,.5);
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+input {
+  border-radius: 3px !important;
+  border: 1px solid silver !important;
+  height: 40px !important;
+}
+
+input:focus, .ant-picker {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid gray !important;
+}
+
+label {
+  font-size: 16px !important;
+  color: black !important;
+}
+
+.ant-form-item {
+  margin: 16px 0 !important;
+}
+
+.primary-button {
+  background-color: #005555 !important;
+  border-color: #005555 !important;
+  height: 40px !important;
+  width: max-content !important;
+  color: white !important;
+  font-size: 18px !important;
+}
+
+.full-width {
+  width: 100% !important;
+  min-width: fit-content !important;
+}
+
+.anchor {
+  color: black !important;
+  text-decoration: underline !important;
+  font-size: 16px !important;
+}
+
+.anchor:hover {
+  text-decoration: underline !important;
+}
+
+.ant-picker-input input {
+  border: none !important;
+}
+
+.ant-picker {
+  height: 40px !important;
+  border-radius: 3px !important;
+  border: 1px solid silver !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.green-frame {
+  background-color: #99cc99;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.red-frame {
+  background-color: #ee9999;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.yellow-bkg {
+  background-color: rgba(255, 220, 0, 0.2);
+}
+
+
+@keyframes appear {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
