@@ -44,6 +44,10 @@ const doctorSchema = new mongoose.Schema(
     status: {
       type: String,
       default: 'pending'
+    },
+    rating: {
+      type: Number,
+      default: 2.5
     }
   },
   {

@@ -131,38 +131,64 @@ const Notifications = () => {
 
   return (
     <Layout>
-      <h1 className="page-title">Notifications</h1>
+      <h1 className="page-title">Notificaciones</h1>
 
       <Tabs>
-        <Tabs.Pane tab='Unseen' key='unseen'>
-          <div className="d-flex justify-content-end">
-            <h1 className="anchor pointer" onClick={() => markAllAsSeen()}>Mark all as seen</h1>
-          </div>
+        <Tabs.Pane tab="Nuevas" key="unseen">
           {user?.unseenNotifications.map((elem, index) => {
             return (
-              <div className="card p-2 m-2 mt-2 d-flex flex-row justify-content-between" key={index}>
-                <div className="card-text pointer" onClick={() => navigate(elem.onClickPath)}>{elem.message}</div>
-                <i className='ri-checkbox-circle-fill normal-text px-2 pointer' onClick={() => markAsSeen(index)}></i>
+              <div
+                className="card p-2 m-2 mt-2 d-flex flex-row justify-content-between align-items-center"
+                key={index}
+              >
+                <div
+                  className="card-text pointer px-2"
+                  onClick={() => navigate(elem.onClickPath)}
+                >
+                  {elem.message}
+                </div>
+                <i
+                  className="ri-check-double-line normal-text px-2 pointer notification-action"
+                  onClick={() => markAsSeen(index)}
+                ></i>
               </div>
-            )
+            );
           })}
-        </Tabs.Pane>
-        <Tabs.Pane tab='Seen' key='seen'>
           <div className="d-flex justify-content-end">
-            <h1 className="anchor pointer" onClick={() => deleteAll()}>Delete all</h1>
+            <h1 className="anchor pointer p-2" onClick={() => markAllAsSeen()}>
+              Marcar como vistas
+            </h1>
           </div>
+        </Tabs.Pane>
+        <Tabs.Pane tab="Vistas" key="seen">
           {user?.seenNotifications.map((elem, index) => {
             return (
-              <div className="card p-2 m-2 mt-2 d-flex flex-row justify-content-between" key={index}>
-                <div className="card-text" onClick={() => navigate(elem.onClickPath)}>{elem.message}</div>
-                <i className='ri-delete-bin-line normal-text px-2 pointer' onClick={() => deleteNotification(index)}></i>
+              <div
+                className="card p-2 m-2 mt-2 d-flex flex-row justify-content-between align-items-center"
+                key={index}
+              >
+                <div
+                  className="card-text pointer px-2"
+                  onClick={() => navigate(elem.onClickPath)}
+                >
+                  {elem.message}
+                </div>
+                <i
+                  className="ri-delete-bin-line normal-text px-2 pointer notification-action"
+                  onClick={() => deleteNotification(index)}
+                ></i>
               </div>
-            )
+            );
           })}
+          <div className="d-flex justify-content-end">
+            <h1 className="anchor pointer p-2" onClick={() => deleteAll()}>
+              Eliminar todas
+            </h1>
+          </div>
         </Tabs.Pane>
       </Tabs>
     </Layout>
-  )
+  );
 }
 
 export default Notifications

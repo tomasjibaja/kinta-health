@@ -47,7 +47,7 @@ const ApplyDoctor = () => {
 
   return (
     <Layout>
-      <h1 className='page-title'>Apply Doctor</h1>
+      <h1 className='page-title'>Aplicar para doctor</h1>
       <hr />
 
       <DoctorForm onFinish={onFinish} />

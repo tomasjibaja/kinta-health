@@ -14,7 +14,7 @@ const Appointments = () => {
 
   const [appointments, setAppointments] = useState([]);
   const dispatch = useDispatch()
-  const isMobile = useMediaQuery({ query: '(max-width: 768px'})
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)'})
 
   const getAppointmentsData = async () => {
     try {
@@ -38,13 +38,13 @@ const Appointments = () => {
   }, [])
 
   const columns = [
+    // {
+    //   title: 'Id',
+    //   dataIndex: '_id',
+    //   className: 'mobile-hidden-column'
+    // },
     {
-      title: 'Id',
-      dataIndex: '_id',
-      className: 'mobile-hidden-column'
-    },
-    {
-      title: 'Doctor',
+      title: (isMobile ? <i class="ri-user-3-line"></i> : 'Doctor'),
       dataIndex: 'name',
       render: (text, record) => (
         <span>{record.doctorInfo.firstName} {record.doctorInfo.lastName}</span>
@@ -59,17 +59,29 @@ const Appointments = () => {
       )
     },
     {
-      title: 'Date',
+      title: (isMobile ? <i class="ri-calendar-line mx-2"></i> : 'Date'),
       dataIndex: 'createdAt',
       render: (text, record) => (
         <span className='appointment-date'>{!isMobile && weekDays[dayjs(record.date).day()]} {dayjs(record.date).format('DD-MM-YY')} at {dayjs(record.time).format('HH:mm')} </span>
       )
     },
     {
-      title: 'Status',
+      title: (isMobile ? <i class="ri-sticky-note-fill"></i> : 'Status'),
       dataIndex: 'status',
       render: (text, record) => (
-        <span className={record.status === 'aproved' && 'green-frame' || record.status === 'rejected' && 'red-frame' || undefined}>{isMobile ? (record.status[0]) : record.status}</span>
+        <span 
+          className={
+            (record.status === 'aproved' && 'green-frame' || record.status === 'rejected' && 'red-frame' || undefined) + ' p-2'
+          }
+        >
+          {isMobile
+            ? (
+              (record.status === 'aproved' && <i class="ri-thumb-up-line"></i>)
+              || (record.status === 'rejected' && <i class="ri-thumb-down-line"></i>)
+              || (record.status === 'pending' && <i class="ri-progress-2-line"></i>)
+            )
+            : record.status}
+        </span>
       )
     }
   ]

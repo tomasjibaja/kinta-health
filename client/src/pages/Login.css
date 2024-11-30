@@ -1,23 +1,65 @@
 .authentication {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #003333;
+  background-color: var(--orange);
+  flex-direction: row;
+}
+
+.title {
+  position: absolute;
+  top: 5dvh;
+  left: 3dvw;
+  font-weight: 700;
+  font-size: 2em;
+  color: white;
+  text-shadow: 0 0 3px var(--black-orange);
+}
+
+.authentication > img {
+  width: 25vw;
+  height: auto;
 }
 
 .authentication-form {
   width: 400px;
   border-radius: 3px;
+  background-color: var(--light-orange);
+}
+
+.authentication-form label {
+  color: var(--black-orange) !important;
+}
+
+.authentication-form .anchor {
+  color: var(--black-orange) !important;
 }
 
 .authentication .card-title {
   font-size: 1.5rem;
   font-weight: bold;
-  background-color: coral;
+  background-color: var(--dark-orange);
   color: white !important;
   max-width: max-content !important;
   padding: 7px 15px !important;
   margin-left: -40px;
   border-bottom-left-radius: 7px;
+}
+
+@media screen and (max-width: 768px) {
+  .authentication {
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5vh;
+  }
+
+  .authentication > img {
+    width: auto;
+    height: 20vh;
+  }
+
+  .title {
+    left: unset;
+  }
 }

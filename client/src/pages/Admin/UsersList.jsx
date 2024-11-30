@@ -6,10 +6,12 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { Table } from 'antd'
 import { API_URL } from '../../constants'
+import { useMediaQuery } from 'react-responsive';
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch()
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
   const getUsersData = async () => {
     try {
@@ -34,26 +36,31 @@ const UsersList = () => {
 
   const columns = [
     {
-      title: 'Name',
+      title: (isMobile ? <i class="ri-user-3-line"></i> : 'Name'),
       dataIndex: 'name'
     },
     {
-      title: 'Email',
-      dataIndex: 'email'
+      title: (isMobile ? <i class="ri-mail-line"></i> : 'Email'),
+      dataIndex: 'email',
+      render: (text, record) => (
+        isMobile 
+          ? <a href={`mailto:${record.email}`}><i class="ri-mail-send-fill"></i></a>
+          : <span>{record.email}</span>
+      )
     },
     {
-      title: 'Created At',
+      title: (isMobile ? <i class="ri-account-box-line mx-2"></i> : 'Created At'),
       dataIndex: 'createdAt',
       render: (record, text) => (
         <span>{dayjs(record).format('DD-MM-YYYY / HH:mm')}</span>
       )
     },
     {
-      title: 'Actions',
+      title: (isMobile ? <i class="ri-edit-2-line"></i> : 'Actions'),
       dataIndex: 'actions',
       render: (text, record) => (
-        <div className='d-flex'>
-          <h1 className='anchor pointer'>Block</h1>
+        <div>
+          <h1 className='anchor pointer'>{isMobile ? <i class="ri-delete-bin-line red-frame py-2"></i> : 'Eliminar'}</h1>
         </div>
       )
     }
@@ -61,7 +68,7 @@ const UsersList = () => {
 
   return (
     <Layout>
-      <h1 className="page-header">Users List</h1>
+      <h1 className="page-title">Listado de usuarios</h1>
       <Table columns={columns} dataSource={users} rowKey='email' />
     </Layout>
   )

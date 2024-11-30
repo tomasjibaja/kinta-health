@@ -17,36 +17,36 @@ const DoctorProfile = ({ onFinish, data }) => {
         })
       }}
     >
-      <h1 className="card-title mt-3">Personal information</h1>
+      <h1 className="page-subtitle mt-3">Información personal </h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="First Name"
+            label="Nombre"
             name="firstName"
             rules={[{ required: true }]}
           >
-            <Input placeholder="First Name" />
+            <Input placeholder="Nombre" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Last Name"
+            label="Apellido"
             name="lastName"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Last Name" />
+            <Input placeholder="Apellido" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Phone Number"
+            label="Teléfono"
             name="phoneNumber"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Phone Number" />
+            <Input placeholder="Teléfono" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
@@ -62,54 +62,57 @@ const DoctorProfile = ({ onFinish, data }) => {
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Address"
+            label="Domicilio"
             name="address"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Address" />
+            <Input placeholder="Domicilio" />
           </Form.Item>
         </Col>
       </Row>
-      <h1 className="card-title mt-3">Profesional information</h1>
+      <h1 className="page-subtitle mt-3">Información profesional</h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Specialization"
+            label="Especialidad"
             name="specialization"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Specialization" />
+            <Input placeholder="Especialidad" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Experience"
+            label="Experiencia"
             name="experience"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Experience" type="number" />
+            <Input placeholder="Experiencia" type="number" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Fee Per Consultation"
+            label="Tarifa por consulta"
             name="feePerConsultation"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Fee Per Consultation" type="number" />
+            <Input placeholder="Tarifa por consulta" type="number" />
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Timings"
+            label="Horario"
             name="timings"
             rules={[{ required: true }]}
           >
-            <TimePicker.RangePicker format='HH:mm' />
+            <TimePicker.RangePicker
+              format={'HH:mm'} 
+              placeholder={[ 'Inicio' , 'Fin']}
+            />
           </Form.Item>
         </Col>
 

@@ -6,8 +6,16 @@
 
 :root {
   --orange : #e88a18;
+  --orange-70 : rgba(232, 138, 24, .7);
   --dark-orange: #d67600;
   --light-orange: #f1c085;
+  --light-orange-20: hwb(33 52% 5% / 0.2);
+  --white-orange: #f6d6b0;
+  --black-orange: #774100;
+
+  --aqua-green: #00bfa3;
+  --green: #00bb6a;
+  --dark-green: #00876f;
 }
 
 .spinner-parent {
@@ -34,17 +42,50 @@
   font-weight: bold;
 }
 
+.page-subtitle {
+  font-size: 18px;
+  color: rgba(0,0,0,.5);
+  font-weight: bold;
+}
+
 .card {
-  box-shadow: 0 0 2px gray;
+  box-shadow: 0 0 3px var(--light-orange);
   margin-bottom: 18px;
-  border-radius: 0;
+  border-radius: 3px;
+  border: 3px solid var(--orange-70);
+  background-color: var(--light-orange-20);
   transition: transform .3s linear;
+}
+
+.card > hr {
+  margin-top: 0;
+  color: var(--dark-orange);
+}
+
+.card-header {
+  background-color: var(--orange);
 }
 
 .card-title {
   font-size: 22px;
   font-weight: bold;
-  color: rgba(0,0,0,.6);
+  color: white;
+}
+
+.doctor-rating {
+  color: var(--light-orange);
+  flex-direction: row-reverse;
+}
+
+.rating-star {
+  font-size: 1.8em;
+  color: var(--white-orange);
+}
+
+.rating-number {
+  font-weight: 600;
+  font-size: 1.5em;
+  padding-right: 5px;
 }
 
 .normal-text {
@@ -83,8 +124,8 @@ label {
 }
 
 .primary-button {
-  background-color: #005555 !important;
-  border-color: #005555 !important;
+  background-color: var(--aqua-green) !important;
+  border-color: var(--dark-green) !important;
   height: 40px !important;
   width: max-content !important;
   color: white !important;
@@ -98,7 +139,7 @@ label {
 
 .anchor {
   color: black !important;
-  text-decoration: underline !important;
+  /* text-decoration: underline !important; */
   font-size: 16px !important;
 }
 
@@ -120,6 +161,11 @@ label {
   cursor: pointer;
 }
 
+.notification-action {
+  color: var(--dark-orange);
+  font-size: 18px;
+}
+
 .green-frame {
   background-color: #99cc99;
   border-radius: 3px;
@@ -128,6 +174,12 @@ label {
 
 .red-frame {
   background-color: #ee9999;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.orange-frame {
+  background-color: var(--light-orange);
   border-radius: 3px;
   padding: 0 7px;
 }
@@ -146,6 +198,16 @@ label {
 
   .primary-button {
     font-size: 16px !important;
+  }
+
+  .doctor-rating {
+    flex-direction: column;
+  }
+
+  .rating-number {
+    font-weight: 600;
+    font-size: 1em;
+    padding-right: 0;
   }
 
 }

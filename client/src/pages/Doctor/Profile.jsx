@@ -73,7 +73,7 @@ const Profile = () => {
 
   return (
     <Layout>
-      <h1 className="page-title">Doctor Profile</h1>
+      <h1 className="page-title">Perfil profesional</h1>
       <hr />
 
       {doctor && <DoctorProfile onFinish={onFinish} data={doctor} />}

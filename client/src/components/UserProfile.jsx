@@ -8,9 +8,13 @@ const UserProfile = () => {
 
   return (
     <Layout>
-      <h1 className='page-title'>User Profile</h1>
-        <div className='card p-4'>
-          <span><b>Nombre:</b> {user?.name}</span>
+      <h1 className='page-title'>Datos de cuenta</h1>
+        <div className='card p-2'>
+          <div className="card-header d-flex flex-row justify-content-between align-items-center">
+            <h1 className="card-title m-0">{user?.name}</h1>
+          </div>
+          <hr />
+          <span><b>Nombre de usuario:</b> {user?.name}</span>
           <span><b>Correo electrónico:</b> {user?.email}</span>
           <span><b>Rol de usuario:</b> {user?.isAdmin && 'ADMIN' || user?.isDoctor && 'DOCTOR' || 'USER'}</span>
         </div>

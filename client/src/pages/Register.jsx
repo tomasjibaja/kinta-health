@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Form, Input } from 'antd'
-import './Register.css'
+import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'
@@ -30,11 +30,11 @@ const Register = () => {
   }
 
   return (
-    <div className='authentication'>
+    <div className='authentication d-flex justify-content-evenly'>
+      <h1 className="title">KINTA HEALTH</h1>
+      <img src="./logo.png" alt="kinta-health-mushroom" />
       <div className='authentication-form card p-3'>
-
         <h1 className='card-title'>Gusto en conocerte 😉</h1>
-
         <Form layout='vertical' onFinish={onFinish}>
           <Form.Item label='Nombre' name='name'>
             <Input placeholder='Juan Pérez' />
@@ -45,12 +45,10 @@ const Register = () => {
           <Form.Item label='Contraseña' name='password'>
             <Input placeholder='123456' type='password' />
           </Form.Item>
-
           <div className="d-flex flex-column">
             <Button className='primary-button my-2' htmlType='submit'>CREAR CUENTA</Button>
             <Link className='anchor' to='/login'>YA TENGO UNA CUENTA</Link>
           </div>
-
         </Form>
       </div>
     </div>

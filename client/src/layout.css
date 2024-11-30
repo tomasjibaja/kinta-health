@@ -16,8 +16,17 @@
 }
 
 .logo {
+  width: fit-content;
+  opacity: 1;
   color: white;
   font-weight: 500;
+  transition: all .3s ease-in-out;
+}
+
+.mushroom {
+  height: 3em;
+  margin: 0;
+  transition: all .3s ease-in-out;
 }
 
 .user-role {
@@ -42,15 +51,21 @@
   transform: scale(0);
 }
 
+.collapsed-sidebar .logo {
+  width: 0;
+  opacity: 0;
+}
+
 .content {
   width: 100%;
   height: 100%;
 }
 
 .header {
-  background-color: white;
+  background-color: var(--light-orange-20);
   border-radius: 5px;
-  box-shadow: 0 0 2px gray;
+  border: 1px solid var(--light-orange);
+  box-shadow: 0 0 2px var(--light-orange);
   margin-bottom: 20px;
   height: 10vh;
   display: flex;
@@ -108,6 +123,7 @@
   border-radius: 5px;
 }
 
+
 @media screen and (max-width: 768px) {
 
   .main {
@@ -126,15 +142,14 @@
     overflow-x: scroll;
     margin: 5px;
     padding: 10px;
-    max-width: calc(100vw - 110px);
     height: 80vh;
+    width: calc(100% - 10px);
   }
 
   .header {
     margin: 5px;
     margin-bottom: 10px;
-    width: 100%;
-    max-width: calc(100vw - 110px);
+    width: calc(100% - 10px);
   }
 
   .bell {
@@ -151,6 +166,23 @@
 
   .sidebar {
     margin: 5px;
+    width: 180px;
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 23px;
+  }
+
+  .collapsed-sidebar {
+    width: 50px;
+    padding: 5px;
+  }
+
+  .menu-item a, .menu-item i {
+    font-size: 12px;
+    padding: 0 5px;
+    margin: 0 5px;
   }
 
   .mobile-hidden-column {

@@ -9,7 +9,7 @@ import { useMediaQuery } from 'react-responsive'
 
 const Layout = ({children}) => {
 
-  const isMobile = useMediaQuery({ query: '(max-width: 768px'})
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)'})
   const [collapsed, setCollapsed] = useState(isMobile);
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
@@ -18,22 +18,22 @@ const Layout = ({children}) => {
 
   const userMenu = [
     {
-      name: 'Home',
+      name: 'Cartilla',
       path: '/',
       icon: 'ri-home-line'
     },
     {
-      name: 'Appointments',
+      name: 'Turnos',
       path: '/appointments',
       icon: 'ri-file-list-line'
     },
     {
-      name: 'Apply Doctor',
+      name: 'Aplicar para doctor',
       path: '/apply-doctor',
       icon: 'ri-check-double-line'
     },
     {
-      name: 'Profile',
+      name: 'Cuenta',
       path: '/profile',
       icon: 'ri-user-line'
     }
@@ -41,17 +41,17 @@ const Layout = ({children}) => {
 
   const doctorMenu = [
     {
-      name: 'Home',
+      name: 'Notificaciones',
       path: '/',
       icon: 'ri-home-line'
     },
     {
-      name: 'Appointments',
+      name: 'Turnos',
       path: '/doctor/appointments',
       icon: 'ri-file-list-line'
     },
     {
-      name: 'Profile',
+      name: 'Perfil',
       path: `/doctor/profile/${user?._id}`,
       icon: 'ri-user-line'
     }
@@ -59,22 +59,22 @@ const Layout = ({children}) => {
 
   const adminMenu = [
     {
-      name: 'Home',
+      name: 'Notificaciones',
       path: '/',
       icon: 'ri-home-line'
     },
     {
-      name: 'Users',
+      name: 'Usuarios',
       path: '/admin/userslist',
       icon: 'ri-user-line'
     },
     {
-      name: 'Doctors',
+      name: 'Doctores',
       path: '/admin/doctorslist',
       icon: 'ri-team-line'
     },
     {
-      name: 'Profile',
+      name: 'Perfil',
       path: '/profile',
       icon: 'ri-profile-line'
     }
@@ -87,7 +87,10 @@ const Layout = ({children}) => {
       <div className='d-flex layout'>
         <div className={`sidebar ${collapsed && 'collapsed-sidebar'}`}>
           <div className='sidebar-header'>
-            <h1 className='logo'>KH</h1>
+            <div className="logo-wrapper d-flex flex-row align-items-center justify-content-between">
+              <h1 className='logo'>KH</h1>
+              <img className='mushroom px-2' src="./logo.png" alt="kinta-health-logo" />
+            </div>
             <h4 className='user-role'>{user?.isAdmin && 'admin' || user?.isDoctor && 'doctor' || 'user'}</h4>
           </div>
           <div className="menu">
@@ -115,7 +118,7 @@ const Layout = ({children}) => {
               `${!collapsed ? 'ri-menu-fold-line': 'ri-menu-unfold-line'} header-action-icon`}
               onClick={() => setCollapsed(!collapsed)}>
             </i>
-            <div className={`d-flex ${isMobile && 'flex-column'} align-items-center px-4 header-links`}>
+            <div className={`d-flex align-items-center px-2 header-links`}>
               <Badge count={user?.unseenNotifications.length} onClick={() => navigate('/notifications')}>
                 <i className="ri-notification-line header-action-icon bell px-3"></i>
               </Badge>
