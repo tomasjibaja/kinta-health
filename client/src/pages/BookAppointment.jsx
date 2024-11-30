@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import axios from 'axios'
 import { hideLoading, showLoading } from '../redux/alertsSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Col, DatePicker, Row, Table, TimePicker } from 'antd'
+import { Button, Col, DatePicker, Row, TimePicker } from 'antd'
 import { API_URL } from '../constants'
 import dayjs from 'dayjs'
 import toast from 'react-hot-toast'
@@ -24,7 +24,7 @@ const BookAppointment = () => {
       dispatch(showLoading());
       const response = await axios
         .post(
-          'http://localhost:5000/api/doctor/get-doctor-info-by-id',
+          API_URL + '/api/doctor/get-doctor-info-by-id',
           {
             doctorId: params.doctorId
           },
@@ -38,6 +38,7 @@ const BookAppointment = () => {
           setDoctor(response.data.data)
         }
     } catch (error) {
+      alert(...error)
       dispatch(hideLoading());
       console.log(error)
     }
@@ -107,8 +108,6 @@ const BookAppointment = () => {
   useEffect(() => {
     getDoctorData();
   }, [])
-
-
 
   return (
     <Layout>

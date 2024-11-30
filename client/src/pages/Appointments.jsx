@@ -6,6 +6,7 @@ import axios from 'axios'
 import { Table } from 'antd'
 import { API_URL } from '../constants'
 import dayjs from 'dayjs'
+import { useMediaQuery } from 'react-responsive'
 
 const weekDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
 
@@ -13,6 +14,7 @@ const Appointments = () => {
 
   const [appointments, setAppointments] = useState([]);
   const dispatch = useDispatch()
+  const isMobile = useMediaQuery({ query: '(max-width: 768px'})
 
   const getAppointmentsData = async () => {
     try {
@@ -57,17 +59,17 @@ const Appointments = () => {
       )
     },
     {
-      title: 'Date and time',
+      title: 'Date',
       dataIndex: 'createdAt',
       render: (text, record) => (
-        <span>{weekDays[dayjs(record.date).day()]} {dayjs(record.date).format('DD-MM-YYYY')} at {dayjs(record.time).format('HH:mm')} </span>
+        <span className='appointment-date'>{!isMobile && weekDays[dayjs(record.date).day()]} {dayjs(record.date).format('DD-MM-YY')} at {dayjs(record.time).format('HH:mm')} </span>
       )
     },
     {
       title: 'Status',
       dataIndex: 'status',
       render: (text, record) => (
-        <span className={record.status === 'aproved' && 'green-frame' || record.status === 'rejected' && 'red-frame' || undefined}>{record.status}</span>
+        <span className={record.status === 'aproved' && 'green-frame' || record.status === 'rejected' && 'red-frame' || undefined}>{isMobile ? (record.status[0]) : record.status}</span>
       )
     }
   ]
