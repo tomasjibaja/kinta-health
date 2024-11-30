@@ -89,7 +89,7 @@ router.post('/change-appointment-status', authMiddleware, async (req, res) => {
 
     unseenNotifications.push({
       type: 'appointment-status-changed',
-      message: `Tu <b>turno</b> para el ${dayjs(appointment.date).format('DD-MM-YYYY')} a las ${dayjs(appointment.time).format('HH:mm')} ha sido <b>${status === 'aproved' ? 'aprobado' : 'rechazado'}</b>.`,
+      message: `Tu turno para el ${dayjs(appointment.date).format('DD-MM-YYYY')} a las ${dayjs(appointment.time).format('HH:mm')} ha sido ${status === 'aproved' ? 'aprobado' : 'rechazado'}.`,
       onClickPath : '/appointments'
     });
     await user.save();
