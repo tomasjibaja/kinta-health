@@ -139,6 +139,7 @@ const BookAppointment = () => {
                 setIsAvailable(false)
                 setDate(dayjs(value).format("DD-MM-YYYY"))
               }}
+              key='date-input'
             />
             <TimePicker
               placeholder='Seleccione horario'
@@ -148,6 +149,7 @@ const BookAppointment = () => {
                 setIsAvailable(false)
                 setTime(dayjs(value).format("HH:mm"));
               }}
+              key='time-input'
             />
       <h2 className='small-text my-2'>los turnos tienen una duración de 1 (una) hora</h2>
             <Button className="primary-button full-width mt-3" onClick={checkAvailability}>Comprobar disponibilidad</Button>
