@@ -88,8 +88,8 @@ const Layout = ({children}) => {
         <div className={`sidebar ${collapsed && 'collapsed-sidebar'}`}>
           <div className='sidebar-header'>
             <div className="logo-wrapper d-flex flex-row align-items-center justify-content-between">
+              <img className='mushroom' src="./logo.png" alt="kinta-health-logo" />
               <h1 className='logo'>KH</h1>
-              <img className='mushroom px-2' src="./logo.png" alt="kinta-health-logo" />
             </div>
             <h4 className='user-role'>{user?.isAdmin && 'admin' || user?.isDoctor && 'doctor' || 'user'}</h4>
           </div>

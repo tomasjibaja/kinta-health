@@ -62,7 +62,7 @@ router.post('/change-doctor-status', authMiddleware, async (req, res) => {
     const unseenNotifications = user.unseenNotifications;
     unseenNotifications.push({
       type: 'new-doctor-request-changed',
-      message: `Your doctor account has been ${status}.`,
+      message: `Tu aplicación para doctor ha cambiado al estado: <b>${status}</b>.`,
       onClickPath : '/notifications'
     });
     await user.save();

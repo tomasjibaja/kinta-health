@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
     if (userExists) {
       return res
         .status(200)
-        .send({ message: 'Email already used', success: false });
+        .send({ message: 'Ese correo ya existe en nuestra base', success: false });
     }
 
     const password = req.body.password;
@@ -36,12 +36,12 @@ router.post('/register', async (req, res) => {
 
     res
       .status(200)
-      .send({ message: 'User created successfully', success: true });
+      .send({ message: 'Usuario creado con éxito', success: true });
       console.log(`User ${req.body.name} created successfully`);
   } catch (error) {
     res
       .status(500)
-      .send({ message: 'Error creating user', success: false });
+      .send({ message: 'Error al crear usuario', success: false });
   }
 
 })
@@ -87,7 +87,7 @@ router.post('/get-user-info-by-id', authMiddleware, async (req, res) => {
       console.log(`Tried to login with ${req.body.email} but it doesn't exist`)
       return res
         .status(200)
-        .send({ message: 'User does not exist', success: false });
+        .send({ message: 'Usuario no existe', success: false });
     } else {
       res
         .status(200)
@@ -116,7 +116,7 @@ router.post('/apply-doctor-account', authMiddleware, async (req, res) => {
     const unseenNotifications = adminUser.unseenNotifications;
     unseenNotifications.push({
       type: 'new-doctor-request',
-      message: `${newDoctor.firstName} ${newDoctor.lastName} has applied for a doctor account`,
+      message: `<b>${newDoctor.firstName} ${newDoctor.lastName}</b> ha aplicado para ser <b>doctor</b>`,
       data: {
         doctorId : newDoctor._id,
         name : newDoctor.firstName + ' ' + newDoctor.lastName
@@ -128,7 +128,7 @@ router.post('/apply-doctor-account', authMiddleware, async (req, res) => {
     
     res.status(200).send({
       success: true,
-      message: 'Doctor account applied successfully'
+      message: 'Has aplicado para ser doctor'
     })
   } catch (error) {
     res
@@ -150,7 +150,7 @@ router.post('/mark-all-notifications-as-seen', authMiddleware, async (req, res) 
 
     res.status(200).send({
       success: true,
-      message: 'All notifications marked as seen',
+      message: 'Todas las notificaciones marcadas como vistas',
       data: updatedUser
     });
 
@@ -173,7 +173,7 @@ router.post('/mark-notification-as-seen', authMiddleware, async (req, res) => {
 
     res.status(200).send({
       success: true,
-      message: 'Notification marked as seen',
+      message: 'Notificación marcada como vista',
       data: updatedUser
     });
 
@@ -194,7 +194,7 @@ router.post('/delete-all-notifications', authMiddleware, async (req, res) => {
 
     res.status(200).send({
       success: true,
-      message: 'All notifications deleted',
+      message: 'Todas las notificaciones vistas han sido borradas',
       data: updatedUser
     });
 
@@ -215,7 +215,7 @@ router.post('/delete-notification', authMiddleware, async (req, res) => {
 
     res.status(200).send({
       success: true,
-      message: 'Notification deleted',
+      message: 'Notificación eliminada',
       data: updatedUser
     });
 
@@ -256,14 +256,14 @@ router.post('/book-appointment', authMiddleware, async (req, res) => {
     const user = await User.findOne({ _id: req.body.doctorInfo.userId });
     user.unseenNotifications.push({
       type: 'new-appointment-request',
-      message: `New appointment request for ${req.body.userInfo.name} on ${dayjs(req.body.date).format('DD-MM-YYYY')} at ${dayjs(req.body.time).format('HH:mm')}`,
+      message: `Nuevo turno solicitado por <b>${req.body.userInfo.name}</b> para el <b>${dayjs(req.body.date).format('DD-MM-YYYY')}</b> a las <b>${dayjs(req.body.time).format('HH:mm')}</b>`,
       onClickPath: '/doctor/appointments'
     })
 
     await user.save();
 
     res.status(200).send({
-      message: "Appointment booked successfully",
+      message: "Solicitud de turno exitosa",
       success: true,
     })
     
@@ -300,33 +300,33 @@ router.post('/check-booking-availability', authMiddleware, async (req, res) => {
 
     if (appointments.length > 0) {
       return res.status(200).send({
-        message: 'Appointment not available',
+        message: 'Turno no disponible',
         success: false,
       })
     } else if (isWeekend) {
       return res.status(200).send({
-        message: 'Appointment must not be on weekends',
+        message: 'No se agendan turnos para fines de semana',
         success: false,
       })
     } else if (moment().toISOString() > date) {
       return res.status(200).send({
-        message: 'Appointment must be on a future date',
+        message: 'La fecha para el turno debe ser en el futuro',
         success: false,
       })
     } else if (moment('DD-MM-YYYY').add(2, 'months').toISOString() > appointmentTime) {
       return res.status(200).send({
-        message: "We are not taking appointments for that date",
+        message: "Aún no estamos agendando turnos para esas fechas",
         success: false,
       })
     } else if (!matchesDoctorShift) {
       return res.status(200).send({
-        message: 'Appointment must match Doctor shift',
+        message: 'El turno debe estar dentro del horario de atención del doctor',
         success: false,
       })
 
     } else {
       res.status(200).send({
-        message: "Appointments available",
+        message: "Turno disponible",
         success: true,
       })
     }

@@ -15,6 +15,14 @@
   margin-bottom: 15px;
 }
 
+.logo-wrapper {
+  transition: all .3s linear;
+}
+
+.collapsed-sidebar .logo-wrapper {
+  padding-left: 5px;
+}
+
 .logo {
   width: fit-content;
   opacity: 1;
@@ -41,6 +49,7 @@
   overflow: hidden;
   text-align: center;
   transition: all .3s ease-in-out;
+  margin-top: 10px;
 }
 
 .collapsed-sidebar {
@@ -95,7 +104,7 @@
 }
 
 .menu {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .menu-item {
@@ -170,8 +179,20 @@
     padding: 10px;
   }
 
+  .collapsed-sidebar .logo-wrapper {
+    padding-left: 2px;
+  }
+
   .logo {
     font-size: 23px;
+  }
+
+  .mushroom {
+    height: 2.5em;
+  }
+
+  .user-role {
+    font-size: 12px;
   }
 
   .collapsed-sidebar {
