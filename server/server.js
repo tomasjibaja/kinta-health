@@ -23,6 +23,11 @@ app.listen(port, () => console.log(`Node server started at port ${port}`));
 
 // Aplicar los middleware
 app.use(cors())
+app.use(cors({
+  origin: [''],
+  methods: ['POST', 'GET'],
+  credentials: true
+}))
 app.use(express.json()) // este parsea lo necesario
 app.use('/api/user', userRoute) // este aplica la lógica de userRoute a todo lo que venga de /api/user/
 app.use('/api/admin', adminRoute) // este aplica la lógica de adminRoute a todo lo que venga de /api/admin/
