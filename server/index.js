@@ -24,7 +24,7 @@ app.listen(port, () => console.log(`Node server started at port ${port}`));
 // Aplicar los middleware
 app.use(cors())
 app.use(cors({
-  origin: ['https://kinta-health-backend.vercel.app'],
+  origin: ['https://kinta-health-backend.app'],
   methods: ['POST', 'GET'],
   credentials: true
 }))
